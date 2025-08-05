@@ -58,9 +58,10 @@ select:hover, button:hover {
   padding: 25px 10px;
 }
 
+/* Auto-resizing tiles */
 .tile {
-  width: 90px;
-  height: 90px;
+  width: clamp(70px, 8vw, 100px);
+  height: clamp(70px, 8vw, 100px);
   perspective: 1000px;
   cursor: pointer;
 }
@@ -87,8 +88,6 @@ select:hover, button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 34px;
-  font-weight: bold;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
@@ -100,6 +99,21 @@ select:hover, button:hover {
   background-color: #06b6d4;
   transform: rotateY(180deg);
   color: #fff;
+  overflow: hidden;
+}
+
+/* Doraemon character image styling */
+.character-img {
+  width: 75%;
+  height: 75%;
+  object-fit: contain;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.tile.revealed .character-img,
+.tile.matched .character-img {
+  transform: scale(1.05);
 }
 
 .tile.matched {
@@ -124,13 +138,15 @@ select:hover, button:hover {
   to { transform: scale(1.05); }
 }
 
+/* Mobile view */
 @media (max-width: 600px) {
   .tile {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
   }
 
-  .tile-front, .tile-back {
-    font-size: 28px;
+  .character-img {
+    width: 70%;
+    height: 70%;
   }
 }

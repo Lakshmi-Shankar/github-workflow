@@ -1,4 +1,14 @@
-const symbolsList = ['🍎','🍌','🍓','🍇','🍍','🥝','🍉','🍒','🥥','🍑','🥭','🍋','🍈','🍐','🍏','🫐','🥕','🌽'];
+const symbolsList = [
+  'Doraemon.jpeg',
+  'Suneo.jpeg',
+  'Nobita.jpeg',
+  'all5.jpeg',
+  'Takeshi Gouda (Gian).jpeg',
+  'Shizuka Minamoto.jpeg',
+  'Master.jpeg',
+  'grnma.jpeg'
+];
+
 const board = document.getElementById('gameBoard');
 const timerDisplay = document.getElementById('timer');
 const status = document.getElementById('status');
@@ -56,7 +66,13 @@ function startGame() {
 
     const back = document.createElement('div');
     back.classList.add('tile-back');
-    back.textContent = symbol;
+    
+    // Add Doraemon character image
+    const img = document.createElement('img');
+    img.src = `images/${symbol}`;
+    img.alt = symbol;
+    img.classList.add('character-img');
+    back.appendChild(img);
 
     tileInner.appendChild(front);
     tileInner.appendChild(back);
